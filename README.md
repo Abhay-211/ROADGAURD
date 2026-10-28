@@ -12,11 +12,11 @@ severity.
 
 Project Links
 - Google Colab notebook: Open RoadGuard AI
-  Notebook
+  Notebook https://colab.research.google.com/drive/1UOxI0MaLAENvKkZkxsnpf7XaHBh_aXsf
 - Model and notebook on GitHub: RoadGuard AI
   repository/file
 - Dataset: Indian Road Damage & Infrastructure Dataset
-  (IRDID)
+  (IRDID) https://github.com/ahs695/Indian-Road-Damage-Infrastructure-Dataset/tree/main/images/potholes
 - Dataset image folders: Browse dataset
   images
 Features
