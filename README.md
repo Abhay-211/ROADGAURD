@@ -55,22 +55,13 @@
 
 </div>
 
-<!--
-OPTIONAL LANDING PAGE SCREENSHOT:
-
-1. Take a screenshot of your deployed website.
-2. Upload it to your GitHub repository:
-   docs/assets/roadguard-landing-page.png
-3. Uncomment the image below.
+<!-- Landing Page Screenshot -->
 
 <p align="center">
-  <img src="docs/assets/roadguard-landing-page.png"
-       alt="RoadGuard AI Landing Page"
+  <img src="docs/assets/CRATERX..png"
+       alt="RoadGuard AI - CRATERX Web Application"
        width="100%">
 </p>
--->
-
----
 
 ## 📌 About the Project
 
