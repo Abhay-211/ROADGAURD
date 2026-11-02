@@ -1,183 +1,193 @@
-# ROADGAURD AI
+<div align="center">
 
-Indian Road Damage Classification Using Transfer Learning
-RoadGuard AI is a computer-vision course project that classifies a road
-photograph into one of three categories: crack, pothole, or
-waterlogged road. It uses transfer learning with TensorFlow/Keras
-and MobileNetV2 pretrained on ImageNet.
-Project scope: This is an image-classification model. It predicts
-a class for the overall image; it does not locate damage with
-bounding boxes, detect individual regions, or estimate damage
-severity.
+<img src="https://img.shields.io/badge/ROADGUARD-AI-0F172A?style=for-the-badge&logo=googlechrome&logoColor=white" height="35"/>
 
-Project Links
-- Google Colab notebook: Open RoadGuard AI
-  Notebook https://colab.research.google.com/drive/1UOxI0MaLAENvKkZkxsnpf7XaHBh_aXsf
-- Model and notebook on GitHub: RoadGuard AI
-  repository/file
-- Dataset: Indian Road Damage & Infrastructure Dataset
-  (IRDID) https://github.com/ahs695/Indian-Road-Damage-Infrastructure-Dataset/tree/main/images/potholes
-- Dataset image folders: Browse dataset
-  images
-Features
-- Classifies road images into three supported classes.
-- Uses MobileNetV2 pretrained on ImageNet as a frozen feature
-  extractor.
-- Trains a lightweight classification head with dropout and a softmax
-  output.
-- Audits labels, image readability, duplicates, and potential
-  train/test leakage.
-- Builds a stratified train/validation/test split after duplicate
-  filtering.
-- Reports test accuracy, precision, recall, F1-score, confusion
-  matrix, and example predictions.
-- Saves the trained Keras model, class mapping, configuration, split
-  manifest, exclusion log, and test predictions.
-- The website UI can provide an upload-and-scan workflow when
-  connected to a working inference implementation.
-Supported Classes
-  Class label          Meaning
-  crack              Road surface crack
-  pothole            Pothole or damaged road surface
-  waterlogged_road   Waterlogged road
+# 🛣️ RoadGuard AI
 
-The current model does not support the complete set of classes
-declared by the source dataset. Labels such as D00, D20, and D40
-are not the output mapping used by this notebook; use the class names
-above unless a separately trained and validated model changes the
-mapping.
-Model Architecture
-- Backbone: tf.keras.applications.MobileNetV2
-- Pretrained weights: ImageNet
-- Input shape: 224 × 224 × 3
-- Backbone: Frozen during the standard training run
-- Classification head: Global Average Pooling → Dropout (0.2) →
-  Dense softmax layer
-- Optimizer: Adam
-- Learning rate: 0.001
-- Loss: Sparse categorical cross-entropy
-- Batch size: 32
-- Maximum epochs: 10
-- Early stopping: Validation loss, patience 3
-- Random seed: 42
-- Optional fine-tuning: Disabled by default
-Preprocessing
-Images are decoded as RGB, resized to 224 × 224, and passed through
-mobilenet_v2.preprocess_input exactly once. This maps pixel values
-into the range expected by MobileNetV2 (approximately -1 to 1). The
-same preprocessing must be used when running inference on new images.
-Dataset and Evaluation
-The notebook reads labels from annotations/labels.csv, cross-checks
-metadata and image folders, excludes ambiguous or unreadable records,
-identifies duplicate/near-duplicate images, and creates its own
-stratified split to reduce leakage.
+### AI-Powered Indian Road Damage Classification Using Transfer Learning
 
-The recorded run in the supplied notebook reported:
+<p>
+  <strong>Making road-condition classification smarter with Artificial Intelligence.</strong>
+</p>
 
-  Metric                               Recorded result
-  Training images                                  207
-  Validation images                                 44
-  Test images                                       44
-  Test accuracy                 95.45% (42/44 correct)
-  Test loss                                     0.2040
-  Macro F1-score                                0.9522
-  Weighted F1-score                             0.9545
-  Misclassified test images                          2
+<p>
+  <a href="https://craterx.ai.studio">
+    <img src="https://img.shields.io/badge/🌐_LIVE_WEB_APP-Visit_Now-16A34A?style=for-the-badge" />
+  </a>
+  <a href="https://colab.research.google.com/drive/1UOxI0MaLAENvKkZkxsnpf7XaHBh_aXsf">
+    <img src="https://img.shields.io/badge/📓_GOOGLE_COLAB-Open_Notebook-F9AB00?style=for-the-badge" />
+  </a>
+  <a href="https://github.com/ahs695/Indian-Road-Damage-Infrastructure-Dataset">
+    <img src="https://img.shields.io/badge/📂_DATASET-Explore-2563EB?style=for-the-badge" />
+  </a>
+</p>
 
-These are results from one small held-out split, not a guarantee of
-performance on new roads. Re-running the notebook may produce different
-values if the dataset changes or the environment differs. The test set
-is small, and source-level similarity and dataset bias may remain.
-Run the Notebook
-1. Open the Google Colab
-   notebook.
-2. Select a suitable runtime. A GPU can speed up training, but the
-   notebook can also run on CPU.
-3. Run the notebook cells in order.
-4. Allow the notebook to clone and audit the dataset repository.
-5. Review the printed data audit and class counts before training.
-6. After training, review the evaluation metrics, confusion matrix, and
-   misclassified examples.
-7. The notebook saves its artifacts to an outputs/ directory and can
-   package them as a ZIP.
-Saved artifacts
-The notebook is configured to save:
-- outputs/roadguard_mobilenetv2.keras --- trained Keras model
-- outputs/class_mapping.json --- class-to-index mapping
-- outputs/config.json --- model and training configuration,
-  versions, and run metrics
-- outputs/split_manifest.csv --- data split manifest
-- outputs/excluded_images.csv --- excluded images and reasons
-- outputs/test_predictions.csv --- predictions for the held-out test
-  set
-The trained .keras model file must be available to whichever backend
-or browser inference system serves predictions. A link to the notebook
-alone does not make the model callable by a website.
-Web Application Integration
-The intended website workflow is:
-1. Click Scan on Web App.
-2. Upload or drag and drop a road image.
-3. Click Scan for Damage.
-4. View the predicted class and confidence returned by the model.
-5. Choose Scan Another Image to start again.
-For this workflow to make real predictions, the website must load the
-trained model in a supported browser runtime or send the image to a
-backend inference API that loads the saved model. The frontend must not
-display fabricated confidence scores or mock predictions as real
-results.
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
+![Keras](https://img.shields.io/badge/Keras-D00000?style=flat-square&logo=keras&logoColor=white)
+![Google Colab](https://img.shields.io/badge/Google_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)
+![Computer Vision](https://img.shields.io/badge/Computer_Vision-8B5CF6?style=flat-square)
+![Deep Learning](https://img.shields.io/badge/Deep_Learning-EC4899?style=flat-square)
 
-If using a backend, the service should: - validate image type and
-size; - convert the image to RGB; - resize to 224 × 224; - apply the
-MobileNetV2 preprocessing function once; - load the trained model and
-return the actual predicted class and softmax scores; - return clear
-errors for invalid uploads or inference failures.
+---
 
-Deployment note: This README describes the intended integration. It
-does not, by itself, verify that a live scanner or inference API is
-deployed and operational.
-Technology Stack
-- Python
-- TensorFlow / Keras
-- MobileNetV2
-- NumPy and pandas
-- Pillow
-- Matplotlib
-- scikit-learn
-- Google Colab (notebook training environment)
-Limitations
-- Only three classes are used by this project.
-- The dataset becomes small after duplicate removal.
-- A small test set makes the reported metrics sensitive to individual
-  images.
-- Near-duplicate filtering cannot remove every case of the same road
-  or video appearing across splits.
-- The waterlogged-road class is heavily associated with one source in
-  the audited dataset, which may introduce source bias.
-- Labels were not independently re-verified by this project.
-- The model classifies the entire image; it does not identify the
-  exact location or extent of damage.
-- Confidence is the model's softmax output, not a guarantee that the
-  prediction is correct.
-- Results should not be treated as proof of reliable performance
-  across all Indian roads, cameras, seasons, or lighting conditions.
-Dataset Attribution and License
-The notebook identifies the dataset as the Indian Road Damage &
-Infrastructure Dataset (IRDID) and reports its license as Creative
-Commons Attribution 4.0 International (CC BY 4.0). Please review the
-repository's current
-LICENSE
-and follow its attribution terms when redistributing dataset content.
+**[🌐 Live Application](https://craterx.ai.studio)**
+&nbsp; • &nbsp;
+**[📓 Colab Notebook](https://colab.research.google.com/drive/1UOxI0MaLAENvKkZkxsnpf7XaHBh_aXsf)**
+&nbsp; • &nbsp;
+**[📂 Dataset](https://github.com/ahs695/Indian-Road-Damage-Infrastructure-Dataset)**
 
-Suggested dataset citation:
-Indian Road Damage & Infrastructure Dataset Contributors (2026).
-Indian Road Damage & Infrastructure Dataset (IRDID) \(Data set\).
-GitHub.
-https://github.com/ahs695/Indian-Road-Damage-Infrastructure-Dataset
+</div>
 
-Reference
-Sandler, M., Howard, A., Zhu, M., Zhmoginov, A., & Chen, L.-C. (2018).
-MobileNetV2: Inverted Residuals and Linear Bottlenecks. IEEE/CVF
-Conference on Computer Vision and Pattern Recognition (CVPR),
-4510--4520. https://arxiv.org/abs/1801.04381
-RoadGuard AI --- a small-data road image classification project
-built for experimentation and learning.
+---
+
+## 🌐 Live Application
+
+<div align="center">
+
+### Experience RoadGuard AI
+
+<a href="https://craterx.ai.studio">
+  <img src="https://img.shields.io/badge/LAUNCH_ROADGUARD_AI-0F172A?style=for-the-badge&logo=googlechrome&logoColor=white" height="45"/>
+</a>
+
+### [https://craterx.ai.studio](https://craterx.ai.studio)
+
+</div>
+
+<!--
+OPTIONAL LANDING PAGE SCREENSHOT:
+
+1. Take a screenshot of your deployed website.
+2. Upload it to your GitHub repository:
+   docs/assets/roadguard-landing-page.png
+3. Uncomment the image below.
+
+<p align="center">
+  <img src="docs/assets/roadguard-landing-page.png"
+       alt="RoadGuard AI Landing Page"
+       width="100%">
+</p>
+-->
+
+---
+
+## 📌 About the Project
+
+**RoadGuard AI** is a Computer Vision and Deep Learning project designed to classify road conditions using Artificial Intelligence.
+
+The system analyses road images and predicts one of three road-condition categories.
+
+### 🎯 Supported Classification Categories
+
+<div align="center">
+
+| 🛣️ Cracks | 🕳️ Potholes | 💧 Waterlogged Roads |
+|:---:|:---:|:---:|
+| Road surface cracks | Road surface cavities | Water accumulation |
+
+</div>
+
+The project implements **MobileNetV2 Transfer Learning**, using ImageNet pretrained weights to extract image features and classify road conditions.
+
+The objective is to demonstrate how AI-based image classification can support road-condition assessment.
+
+> **Project scope:** RoadGuard AI performs image-level classification. It does not currently identify the exact location or boundaries of damage within an image. It is not an IoT-based or continuous real-time road-monitoring system.
+
+---
+
+## ✨ Key Features
+
+<div align="center">
+
+| Feature | Description |
+|:---|:---|
+| 🧠 Transfer Learning | MobileNetV2 pretrained on ImageNet |
+| 📸 Image Classification | Classifies three road-condition categories |
+| 🧹 Dataset Cleaning | Image auditing and duplicate detection |
+| 🔍 Leakage Prevention | Custom deduplicated dataset splitting |
+| 📊 Performance Evaluation | Accuracy, precision, recall and F1-score |
+| 📉 Visual Analytics | Training graphs and confusion matrix |
+| 💾 Model Export | Saves trained model and configuration |
+| 🌐 Web Application | Deployed interface for accessing the project |
+
+</div>
+
+---
+
+## 🛠️ Technology Stack
+
+### Programming Language
+
+<p>
+  <img src="https://skillicons.dev/icons?i=python" height="55" alt="Python"/>
+</p>
+
+### Machine Learning & Deep Learning
+
+<p>
+  <img src="https://skillicons.dev/icons?i=tensorflow,keras" height="55" alt="TensorFlow and Keras"/>
+  <img src="https://img.shields.io/badge/MobileNetV2-Transfer_Learning-2563EB?style=for-the-badge" height="28"/>
+</p>
+
+### Data Processing & Visualisation
+
+<p>
+  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Pillow-3776AB?style=for-the-badge"/>
+</p>
+
+### Development Environment
+
+<p>
+  <img src="https://skillicons.dev/icons?i=googlecolab,github,vscode" height="55" alt="Google Colab, GitHub and VS Code"/>
+</p>
+
+### Technology Overview
+
+| Technology | Application |
+|:---|:---|
+| Python | Primary programming language |
+| TensorFlow | Deep learning framework |
+| Keras | Neural network implementation |
+| MobileNetV2 | Pretrained CNN architecture |
+| NumPy | Numerical operations |
+| Pandas | Dataset handling |
+| Matplotlib | Data visualisation |
+| Scikit-learn | Model evaluation |
+| Pillow | Image processing |
+| Google Colab | Model development and training |
+| GitHub | Source code and project management |
+
+---
+
+## 📂 Dataset Information
+
+The project uses the **Indian Road Damage & Infrastructure Dataset (IRDID)**.
+
+<div align="center">
+
+<a href="https://github.com/ahs695/Indian-Road-Damage-Infrastructure-Dataset">
+  <img src="https://img.shields.io/badge/IRDID-Indian_Road_Damage_Dataset-2563EB?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+</div>
+
+**Dataset Resources:**
+
+- [Complete Dataset Repository](https://github.com/ahs695/Indian-Road-Damage-Infrastructure-Dataset)
+- [Potholes Image Collection](https://github.com/ahs695/Indian-Road-Damage-Infrastructure-Dataset/tree/main/images/potholes)
+
+### Dataset Distribution
+
+After dataset auditing and duplicate removal, the working dataset contains 295 unique images.
+
+```mermaid
+pie showData
+    title Dataset Distribution
+    "Training - 207 Images" : 207
+    "Validation - 44 Images" : 44
+    "Testing - 44 Images" : 44
